@@ -227,27 +227,11 @@ router.delete('/:id/comment/:comment_id', auth, async (req, res) => {
       return res.status(404).json({ msg: 'Post not found'});
     }
 
-    // const commentIndex = post.comments.map(item => item.id.toString()).indexOf(req.params.comment_id);
-    // console.log(commentIndex);
-
-    // if (commentIndex === -1){
-    //   return res.status(404).json({ msg: 'Comment not found'});
-    // }
-    
-    // const comment = post.comments[commentIndex];
-    
-    // console.log(req.user.id);
-    // console.log(comment.user);
-
     const comment = post.comments.find(item => item.id === req.params.comment_id);
 
     if (!comment) {
       return res.status(404).json({ msg: 'Comment not found'});
     }
-
-    // if (req.user.id !== post.user || req.user.id !== comment.user) {
-    //   return res.status(401).json({ msg: 'User is not authorized to delete this comment' });
-    // }
 
     if (post.user.toString() !== req.user.id && comment.user.toString() !== req.user.id){
       return res.status(401).json({ msg: 'User is not authorized to delete this comment' });
