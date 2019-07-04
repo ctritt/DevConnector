@@ -49,8 +49,6 @@ export const register = ({ name, email, password }) => async dispatch => {
 
     dispatch(loadUser());
 
-    dispatch(setAlert('Registration Successful', 'success'));
-
   } catch (err) {
     console.error(err.message);
 
