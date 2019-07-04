@@ -8,7 +8,7 @@ const router = express.Router();
 
 const User = require('../../../models/User');
 
-// @route   GET api/auth
+// @route   GET api/v1/auth
 // @desc    Test Route
 // @access  Public
 router.get('/', auth, async (req, res) => {
