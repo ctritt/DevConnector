@@ -7,6 +7,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   USER_LOADED,
+  CLEAR_PROFILE,
   AUTH_ERROR
 } from './types';
 
@@ -48,7 +49,6 @@ export const register = ({ name, email, password }) => async dispatch => {
     });
 
     dispatch(loadUser());
-
   } catch (err) {
     console.error(err.message);
 
@@ -83,7 +83,6 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
-
   } catch (err) {
     console.error(err.message);
 
@@ -103,5 +102,8 @@ export const login = (email, password) => async dispatch => {
 export const logout = () => async dispatch => {
   dispatch({
     type: LOGOUT
-  })
-}
+  });
+  dispatch({
+    type: CLEAR_PROFILE
+  });
+};
